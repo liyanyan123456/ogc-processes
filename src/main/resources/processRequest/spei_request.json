@@ -1,0 +1,56 @@
+{
+  "inputs": {
+    "rasterProductName": {
+      "id": "rasterProductName",
+      "input": {
+        "dataType": {
+          "name": "string"
+        },
+        "value": "LC08_L1TP_ARD_EO"
+      }
+    },
+    "timeScale": {
+      "id": "timeScale",
+      "input": {
+        "dataType": {
+          "name": "integer"
+        },
+        "value": 10
+      }
+    },
+    "extent": {
+      "id": "extent",
+      "input": {
+        "dataType": {
+          "name": "string"
+        },
+        "value": "113.01494046724021,30.073457222586285,113.9181165740333,30.9597805438586"
+      }
+    },
+    "startTime": {
+      "id": "startTime",
+      "input": {
+        "dataType": {
+          "name": "string"
+        },
+        "value": "2018-07-01"
+      }
+    },
+    "endTime": {
+      "id": "endTime",
+      "input": {
+        "dataType": {
+          "name": "string"
+        },
+        "value": "2018-12-01"
+      }
+    }
+  },
+  "outputs": {
+    "stringOutput": {
+      "transmissionMode": "value"
+    }
+  },
+  "response": "document",
+  "mode": "async"
+}

@@ -1,0 +1,101 @@
+{
+  "id": "ndvi",
+  "title": "ndvi",
+  "version": "1.0.0",
+  "mutable": false,
+  "jobControlOptions": ["async-execute"],
+  "outputTransmission": ["value", "reference"],
+  "inputs": {
+    "rasterProductName": {
+      "id": "rasterProductName",
+      "title": "raster input",
+      "input": {
+        "literalDataDomain": {
+          "dataType": {
+            "rasterProductName": "string"
+          },
+          "valueDefinition": {
+            "anyValue": true
+          }
+        }
+      },
+      "minOccurs": 1,
+      "maxOccurs": 1
+    },
+    "extent": {
+      "id": "extent",
+      "title": "extent",
+      "input": {
+        "literalDataDomain": {
+          "dataType": {
+            "extent": "string"
+          },
+          "valueDefinition": {
+            "anyValue": true
+          }
+        }
+      },
+      "minOccurs": 1,
+      "maxOccurs": 1
+    },
+    "startTime": {
+      "id": "startTime",
+      "title": "startTime",
+      "input": {
+        "literalDataDomain": {
+          "dataType": {
+            "startTime": "string"
+          },
+          "valueDefinition": {
+            "anyValue": true
+          }
+        }
+      },
+      "minOccurs": 1,
+      "maxOccurs": 1
+    },
+    "endTime": {
+      "id": "endTime",
+      "title": "endTime",
+      "input": {
+        "literalDataDomain": {
+          "dataType": {
+            "endTime": "string"
+          },
+          "valueDefinition": {
+            "anyValue": true
+          }
+        }
+      },
+      "minOccurs": 1,
+      "maxOccurs": 1
+    }
+  },
+  "outputs": {
+    "complexOutput": {
+      "id": "complexOutput",
+      "title": "complexOutput",
+      "output": {
+        "formats": [
+          {
+            "default": true,
+            "mimeType": "application/xml"
+          },
+          {
+            "mimeType": "application/xml"
+          },
+          {
+            "mimeType": "text/xml"
+          }
+        ]
+      }
+    }
+  },
+  "links": [
+    {
+      "href": "/processes_api/processes/ndvi/jobs",
+      "rel": "execute",
+      "title": "NDVI Execute endpoint"
+    }
+  ]
+}

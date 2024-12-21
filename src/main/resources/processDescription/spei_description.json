@@ -1,0 +1,108 @@
+{
+  "id": "spei",
+  "title": "spei",
+  "version": "1.0.0",
+  "mutable": false,
+  "jobControlOptions": ["async-execute"],
+  "outputTransmission": ["value", "reference"],
+  "inputs":{
+    "startTime": {
+      "title": "startTime",
+      "schema": {
+        "type": "string",
+        "default": "2020-01-01"
+      },
+      "minOccurs": 1,
+      "maxOccurs": 1
+    },
+    "endTime": {
+      "title": "endTime",
+      "schema": {
+        "type": "string",
+        "default": "2022-12-31"
+      },
+      "minOccurs": 1,
+      "maxOccurs": 1
+    },
+    "timeScale": {
+      "title": "timeScale",
+      "description": "The time scale to analysis, in terms of months",
+      "schema": {
+        "type": "integer"
+      },
+      "minOccurs": 1,
+      "maxOccurs": 1
+    },
+    "extent": {
+      "title": "extent",
+      "description": "Bounding box of the extent to process",
+      "schema": {
+        "allOf": [
+          {
+            "format": "ogc-bbox"
+          },
+          {
+            "$ref": "https://raw.githubusercontent.com/opengeospatial/ogcapi-processes/master/core/openapi/schemas/bbox.yaml"
+          }
+        ],
+        "default": {
+          "bbox": [
+            73.9500000000000028,
+            17.9499999999999957,
+            135.0500000000000114,
+            54.0499999999999972
+          ],
+          "crs": "http://www.opengis.net/def/crs/OGC/1.3/CRS84"
+        }
+      },
+      "minOccurs": 0,
+      "maxOccurs": 1
+    }
+  },
+  "outputs":{
+    "droughtIndex": {
+      "title": "droughtIndex",
+      "description": "The drought index calculated using SPEI",
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": [
+            "url",
+            "time"
+          ],
+          "properties": {
+            "time": {
+              "type": "String"
+            },
+            "url": {
+              "type": "String",
+              "format": "byte",
+              "contentMediaType": "image/png"
+            }
+          }
+        }
+      }
+    }
+  },
+  "links": [
+    {
+      "type": "application/json",
+      "rel": "self",
+      "href": "processes_api/processes/spei",
+      "title": "The description of SPEI process"
+    },
+    {
+      "type": "text/html",
+      "rel": "http://www.opengis.net/def/rel/ogc/1.0/job-list",
+      "href": "processes_api/processes/spei/jobs",
+      "title": "The jobs for SPEI process"
+    },
+    {
+      "type": "application/json",
+      "rel": "http://www.opengis.net/def/rel/ogc/1.0/execute",
+      "href": "/processes_api/processes/spei/execution",
+      "title": "Execution for SPEI process"
+    }
+  ]
+}

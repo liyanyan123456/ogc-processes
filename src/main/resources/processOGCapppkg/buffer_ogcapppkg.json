@@ -1,0 +1,93 @@
+{
+  "executionUnit": {
+    "type": "docker",
+    "image": "buffer:latest",
+    "deployment": "local",
+    "config": {
+      "cpuMin": 2.0,
+      "cpuMax": 5.0,
+      "memoryMin": 1.0,
+      "memoryMax": 15.0
+    }
+  },
+  "processDescription": {
+    "id": "buffer",
+    "title": "buffer",
+    "version": "1.0.0",
+    "mutable": true,
+    "jobControlOptions": [
+      "async-execute"
+    ],
+    "outputTransmission": [
+      "value",
+      "reference"
+    ],
+    "inputs": {
+      "distance": {
+        "title": "distance",
+        "description": "The distance of the buffer",
+        "schema": {
+          "type": "number",
+          "format": "double",
+          "minimum": 0
+        },
+        "minOccurs": 1,
+        "maxOccurs": 1
+      },
+      "geometryInput": {
+        "title": "Geometry input",
+        "description": "This is  a geometry input.",
+        "minOccurs": 1,
+        "maxOccurs": 1,
+        "schema": {
+          "type": "string",
+          "contentMediaType": "application/gml+xml; version=3.2",
+          "contentSchema": "http://schemas.opengis.net/gml/3.2.1/geometryBasic2d.xsd"
+        }
+      }
+    },
+    "outputs": {
+      "geometryOutput": {
+        "schema": {
+          "oneOf": [
+            {
+              "type": "string",
+              "contentMediaType": "application/gml+xml",
+              "contentSchema": "http://schemas.opengis.net/gml/3.2.1/geometryBasic2d.xsd"
+            },
+            {
+              "allOf": [
+                {
+                  "format": "geojson-geometry"
+                },
+                {
+                  "$ref": "http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/schemas/geometryGeoJSON.yaml"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "links": [
+      {
+        "href": "processes_api/processes/buffer",
+        "rel": "self",
+        "type": "application/json",
+        "title": "The description of Buffer process"
+      },
+      {
+        "href": "processes_api/processes/buffer/jobs",
+        "rel": "http://www.opengis.net/def/rel/ogc/1.0/job-list",
+        "type": "text/html",
+        "title": "The jobs for buffer process"
+      },
+      {
+        "href": "/processes_api/processes/buffer/execution",
+        "rel": "http://www.opengis.net/def/rel/ogc/1.0/execute",
+        "type": "application/json",
+        "title": "Execution for buffer process"
+      }
+    ]
+  }
+}
